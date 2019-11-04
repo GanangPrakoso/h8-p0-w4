@@ -4,7 +4,7 @@ function angkaPrima(angka) {
     } else if (angka==2){
         return true
     } else {
-        for (let i=2; i<angka; i++){
+        for (let i=3; i<angka; i++){
             if (angka%i == 0){
                 return false
             }
