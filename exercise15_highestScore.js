@@ -2,7 +2,7 @@ function highestScore (students) {
     if (students.length<1){
         console.log('');
         
-        return [];
+        return {};
     }
 
     var rapor = [];
