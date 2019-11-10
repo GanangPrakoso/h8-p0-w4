@@ -1,25 +1,35 @@
 function cariModus(arr) {
-    var modus = [];
 
-    for(let i=0; i<=arr.length-1; i++){
-        for (let j=i+1; j<=arr.length-1; j++){
-            if (arr[i]==arr[j]){
-                modus.push(arr[j]);
+    let frekuensiTerbanyak = 0;
+    let modus = 0;
+
+    for (let i=0; i<=arr.length-1; i++){
+        let frekuensi = 0;
+        for (let j=i; j<=arr.length-1; j++){
+            if (arr[i]===arr[j] && i!==j){
+                frekuensi++
+                if (frekuensi>frekuensiTerbanyak){
+                    frekuensiTerbanyak = frekuensi
+                    modus = arr[i];
+                }
             }
         }
     }
-    for (let k=0; k<=modus.length-1; k++){
-        if (modus[k]==modus[k+1]){
-            return -1
-        }
-    }
-    if (modus.length>=1){
-        return modus[0]
-    } else if (modus.length<1){
+    if (frekuensiTerbanyak===0){
         return -1
-    }  
+    }
+
+    let totalArray = 0;
+    for (let k=0; k<=arr.length-1; k++){
+        totalArray+=arr[k]
+    }
+    if (totalArray/arr[0]==arr.length){
+        return -1
+    }
+    return modus
   }
   
+  // TEST CASES
   console.log(cariModus([10, 4, 5, 2, 4])); // 4
   console.log(cariModus([5, 10, 10, 6, 5])); // 5
   console.log(cariModus([10, 3, 1, 2, 5])); // -1
